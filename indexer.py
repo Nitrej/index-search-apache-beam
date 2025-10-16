@@ -10,7 +10,9 @@ import sys
 from utils import (
     ReadFilesDoFn, 
     DocToTokenCounts, 
-    ComputeTfIdf
+    ComputeTfIdf,
+    test_doc_to_token_counts, 
+    test_compute_tfidf
 )
 
 def build_index(input_dir, output_file, tmp_dir=None):
@@ -69,7 +71,19 @@ if __name__ == '__main__':
     p_index.add_argument('--input_dir', required=True, help='Directory with .txt files')
     p_index.add_argument('--output', default='index_tfidf.json', help='Output JSON file')
 
+    p_test = subparsers.add_parser('test', help='Run Apache Beam unit tests for the indexer pipeline.')
     p_search_placeholder = subparsers.add_parser('search', help='Placeholder. Run search operations using "python searcher.py search..."')
+
+    test_parser = argparse.ArgumentParser(add_help=False)
+    test_parser.add_argument('cmd', nargs='?', default=None)
+    test_args, _ = test_parser.parse_known_args()
+
+    if test_args.cmd == 'test':
+        print("Running Beam unit tests...")
+        test_doc_to_token_counts()
+        test_compute_tfidf()
+        print("All Beam tests passed successfully.")
+        sys.exit(0)
 
     args = parser.parse_args()
 
