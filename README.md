@@ -29,11 +29,7 @@ Run Indexer: Map your local ./data folder to /app/data inside the container, and
 
 Ensure you are running this from the project root.
 ```
-docker run --rm \
-    -v "$(pwd)/data:/app/data" \
-    -v "$(pwd):/app/output" \
-    index-search-app \
-    python indexer.py index --input_dir /app/data --output /app/output/index_tfidf.json
+docker run --rm -v "$(pwd)/data:/app/data" -v "$(pwd):/app/output" index-search-app python indexer.py index --input_dir /app/data --output /app/output/index_tfidf.json
 ```
 
 
@@ -45,10 +41,7 @@ Once the index is generated, you can run the search command. We map the generate
 
 Replace "your search phrase" with the query you want to use
 ```
-docker run --rm \
-    -v "$(pwd)/index_tfidf.json:/app/index.json" \
-    index-search-app \
-    python searcher.py search --index /app/index.json --query "your search phrase here" --top_k 5
+docker run --rm -v "$(pwd)/index_tfidf.json:/app/index.json" index-search-app python searcher.py search --index /app/index.json --query "your search phrase here" --top_k 5
 ```
 
 
