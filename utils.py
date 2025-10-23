@@ -129,10 +129,9 @@ EXPECTED_DF_PAIR = [
     ('orange', TEST_DOC_ID_2),
 ]
 
-# IDF_apple=log(3)~1.0986, IDF_banana=log(2)~0.6931, IDF_orange=log(3)~1.0986
 EXPECTED_TFIDF = [
-    {'id': TEST_DOC_ID_1, 'path': 'path1', 'tfidf': {'apple': 0.7324080774132604, 'banana': 0.23104918664057845}},
-    {'id': TEST_DOC_ID_2, 'path': 'path2', 'tfidf': {'banana': 0.3465735902799473, 'orange': 0.5493061443340539}},
+    {'id': TEST_DOC_ID_1, 'path': 'path1', 'tfidf': {'apple': 0.7324081924454064, 'banana': 0.23104906018664842}},
+    {'id': TEST_DOC_ID_2, 'path': 'path2', 'tfidf': {'banana': 0.34657359027997264, 'orange': 0.5493061443340549}},
 ]
 
 def test_doc_to_token_counts():

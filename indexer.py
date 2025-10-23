@@ -88,7 +88,7 @@ if __name__ == '__main__':
     args = parser.parse_args()
 
     if args.cmd == 'index':
-        build_index(args.input_dir, args.output, tmp_dir=args.tmp_dir)
+        build_index(args.input_dir, args.output)
     elif args.cmd == 'search':
         print("Please run search operations using 'python searcher.py search ...'")
     else:
